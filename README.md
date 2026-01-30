@@ -147,10 +147,10 @@ Claude Code is an AI assistant that can help you build and modify this project b
 
 ### Install Claude Code
 
-1. First, make sure you have Node.js installed (see above)
-2. Install Claude Code globally:
+1. First, make sure you have Homebrew installed (see above)
+2. Install Claude Code via Homebrew:
    ```bash
-   npm install -g @anthropic-ai/claude-code
+   brew install claude-code
    ```
 3. You'll need an Anthropic API key. Get one at [console.anthropic.com](https://console.anthropic.com/)
 
