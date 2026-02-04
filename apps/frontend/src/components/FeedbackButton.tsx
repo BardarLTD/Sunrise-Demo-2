@@ -31,7 +31,9 @@ export default function FeedbackButton({
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsModalOpen(true);
   };
 
@@ -165,6 +167,7 @@ export default function FeedbackButton({
   return (
     <>
       <button
+        type="button"
         onClick={handleButtonClick}
         disabled={disabled}
         className={`${className} ${
