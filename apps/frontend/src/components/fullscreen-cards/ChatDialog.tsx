@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import FeedbackButton from '@/components/FeedbackButton';
+import { mixpanelService } from '@/lib/mixpanel';
 
 interface ChatDialogProps {
   welcomeTitle?: string;
@@ -19,61 +20,106 @@ export function ChatDialog({
   onSubmit,
 }: ChatDialogProps) {
   const [message, setMessage] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (onSubmit) {
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
+    if (onSubmit && message.trim()) {
+      // Track the prompt text in Mixpanel
+      mixpanelService.track('Customer Profile Submitted', {
+        prompt_text: message,
+        prompt_length: message.length,
+        page: window.location.pathname,
+        timestamp: new Date().toISOString(),
+      });
+
       onSubmit(message);
       setMessage('');
     }
   };
 
+  const handleGeneratePrompt = () => {
+    setMessage(
+      '25-35 y/o white-collar professionals living in Sydney interested in productivity, health/wellness and premium gadgets. $80K+ salary',
+    );
+  };
+
   return (
     <motion.div
-      className="w-full max-w-2xl overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-b from-white/15 to-white/5 shadow-2xl backdrop-blur-xl"
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
+      className="flex w-full max-w-2xl flex-col items-center"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
     >
-      {/* Welcome Banner */}
-      <div className="border-b border-white/10 bg-white/5 px-8 py-6">
-        <div className="mb-3 flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-slate-400 to-slate-600">
-            <Sparkles className="h-4 w-4 text-white" />
-          </div>
-          <h3 className="text-xl font-semibold text-white">{welcomeTitle}</h3>
-        </div>
-        <p className="text-base leading-relaxed text-slate-300">
-          {welcomeMessage}
-        </p>
-      </div>
+      {/* Title above prompt box */}
+      <h1 className="mb-4 text-center text-5xl font-bold text-white">
+        {welcomeTitle}
+      </h1>
+      <p className="mb-8 max-w-lg text-center text-base leading-relaxed text-slate-400">
+        {welcomeMessage}
+      </p>
 
-      {/* Chat Input Area */}
-      <div className="p-8">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="relative">
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder={placeholder}
-              rows={4}
-              className="w-full resize-none rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-slate-400 focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSubmit(e);
-                }
-              }}
-            />
-          </div>
-          <div className="flex justify-end">
-            <Button
-              type="submit"
-              className="gap-2 rounded-xl bg-white/20 px-6 py-5 text-base font-medium text-white backdrop-blur transition-all hover:bg-white/30 hover:scale-105"
+      {/* Minimal prompt box */}
+      <div
+        className="relative w-full overflow-hidden rounded-xl border border-white/10 transition-all duration-300"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Gradient background on hover */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-500 ease-out"
+          style={{
+            backgroundImage: 'url(/gradient-bg.png)',
+            opacity: isHovered ? 0.4 : 0,
+          }}
+        />
+        {/* Solid background */}
+        <div
+          className="absolute inset-0 bg-[#232323] transition-opacity duration-500 ease-out"
+          style={{ opacity: isHovered ? 0.7 : 1 }}
+        />
+
+        <form onSubmit={handleSubmit} className="relative z-10">
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder={placeholder}
+            rows={4}
+            className={`w-full resize-none border-none bg-transparent px-5 py-4 text-base text-white focus:outline-none transition-all duration-500 ease-out ${
+              isHovered
+                ? 'placeholder:text-white'
+                : 'placeholder:text-slate-500'
+            }`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit(e);
+              }
+            }}
+          />
+          <div className="flex items-center justify-between border-t border-white/5 px-4 py-3">
+            <button
+              type="button"
+              onClick={handleGeneratePrompt}
+              className="text-sm font-medium text-slate-400 transition-colors hover:text-white"
             >
-              Continue
-              <Send className="h-4 w-4" />
-            </Button>
+              Generate Prompt
+            </button>
+            <FeedbackButton
+              question="How did you get this customer profile?"
+              buttonText="Continue"
+              onClick={() => handleSubmit()}
+              answerType="text"
+              disabled={!message.trim()}
+              className="flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <>
+                Continue
+                <ArrowRight className="h-4 w-4" />
+              </>
+            </FeedbackButton>
           </div>
         </form>
       </div>

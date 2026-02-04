@@ -12,6 +12,7 @@ interface FeedbackButtonProps {
   options?: string[]; // For multiple-choice questions
   className?: string;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export default function FeedbackButton({
@@ -22,6 +23,7 @@ export default function FeedbackButton({
   options = [],
   className = '',
   disabled = false,
+  children,
 }: FeedbackButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [answer, setAnswer] = useState('');
@@ -169,7 +171,7 @@ export default function FeedbackButton({
           disabled ? 'opacity-50 cursor-not-allowed' : ''
         }`}
       >
-        {buttonText}
+        {children || buttonText}
       </button>
 
       {isModalOpen && (
