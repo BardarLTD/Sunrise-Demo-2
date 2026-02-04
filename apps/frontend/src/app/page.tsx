@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ChatDialog,
+  CustomerControlPanel,
   GeneratedCommunityCardStack,
-  GeneratedCustomerCarousel,
   FullscreenCard,
   Stepper,
   WhiteboardBackground,
@@ -151,8 +151,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Carousel */}
-          <div className="mt-6 h-[480px] w-full shrink-0">
+          {/* Customer Control Panel / Carousel */}
+          <div className="mt-6 flex-1 w-full">
             {generateCustomers.isPending ? (
               <div className="flex h-full items-center justify-center">
                 <GeneratingMessage message="Analyzing your ideal customers..." />
@@ -171,7 +171,7 @@ export default function Home() {
                 </div>
               </div>
             ) : customers ? (
-              <GeneratedCustomerCarousel customers={customers} />
+              <CustomerControlPanel customers={customers} />
             ) : (
               <div className="flex h-full items-center justify-center">
                 <p className="text-lg text-gray-300">
