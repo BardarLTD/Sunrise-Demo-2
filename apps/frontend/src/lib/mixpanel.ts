@@ -37,12 +37,7 @@ class MixpanelService {
         debug: process.env.NODE_ENV === 'development',
         record_sessions_percent: 100,
         ignore_dnt: true,
-        autocapture: {
-          click: true,
-          scroll: true,
-          input: true,
-          pageview: false,
-        },
+        autocapture: false,
       });
 
       this.mixpanel = mixpanel;
