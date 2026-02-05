@@ -29,6 +29,9 @@ importers:
       '@openrouter/ai-sdk-provider':
         specifier: ^2.1.1
         version: 2.1.1(ai@6.0.69(zod@4.3.6))(zod@4.3.6)
+      '@openrouter/sdk':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@radix-ui/react-slot':
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.10)(react@19.2.4)
@@ -56,9 +59,6 @@ importers:
       next:
         specifier: ^15.1.6
         version: 15.5.11(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      openai:
-        specifier: ^6.17.0
-        version: 6.17.0(zod@4.3.6)
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -537,6 +537,9 @@ packages:
     peerDependencies:
       ai: ^6.0.0
       zod: ^3.25.0 || ^4.0.0
+
+  '@openrouter/sdk@0.5.1':
+    resolution: {integrity: sha512-Kl0N1jIj7A3lnkM5dO3SGP8JP3jAozzs6JWcHVuZUBt5DsGKxFGNH1Y15bCfsJiLNA2ylAQpCN3aNcgEYkkL5Q==}
 
   '@opentelemetry/api@1.9.0':
     resolution: {integrity: sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg==}
@@ -1357,18 +1360,6 @@ packages:
       sass:
         optional: true
 
-  openai@6.17.0:
-    resolution: {integrity: sha512-NHRpPEUPzAvFOAFs9+9pC6+HCw/iWsYsKCMPXH5Kw7BpMxqd8g/A07/1o7Gx2TWtCnzevVRyKMRFqyiHyAlqcA==}
-    hasBin: true
-    peerDependencies:
-      ws: ^8.18.0
-      zod: ^3.25 || ^4.0
-    peerDependenciesMeta:
-      ws:
-        optional: true
-      zod:
-        optional: true
-
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
@@ -2040,6 +2031,10 @@ snapshots:
   '@openrouter/ai-sdk-provider@2.1.1(ai@6.0.69(zod@4.3.6))(zod@4.3.6)':
     dependencies:
       ai: 6.0.69(zod@4.3.6)
+      zod: 4.3.6
+
+  '@openrouter/sdk@0.5.1':
+    dependencies:
       zod: 4.3.6
 
   '@opentelemetry/api@1.9.0': {}
@@ -2781,10 +2776,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
-
-  openai@6.17.0(zod@4.3.6):
-    optionalDependencies:
-      zod: 4.3.6
 
   optionator@0.9.4:
     dependencies:

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@openrouter/ai-sdk-provider": "^2.1.1",
+    "@openrouter/sdk": "^0.5.1",
     "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/postcss": "^4.1.18",
     "@tanstack/react-query": "^5.90.20",
@@ -21,7 +22,6 @@
     "lucide-react": "^0.563.0",
     "mixpanel-browser": "^2.74.0",
     "next": "^15.1.6",
-    "openai": "^6.17.0",
     "postcss": "^8.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

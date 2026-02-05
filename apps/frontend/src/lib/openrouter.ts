@@ -1,4 +1,5 @@
-import OpenAI from 'openai';
+import { OpenRouter } from '@openrouter/sdk';
+import type { Message } from '@openrouter/sdk/models';
 
 // Type for chat completion responses
 export interface ChatCompletionResponse {
@@ -26,19 +27,16 @@ export class OpenRouterError extends Error {
 }
 
 class OpenRouterClient {
-  private client: OpenAI | null = null;
+  private client: OpenRouter | null = null;
   private readonly maxRetries = 3;
   private readonly retryDelay = 1000; // 1 second
 
-  private getClient(): OpenAI {
+  private getClient(): OpenRouter {
     if (!this.client) {
-      this.client = new OpenAI({
+      this.client = new OpenRouter({
         apiKey: process.env.OPENROUTER_API_KEY,
-        baseURL: process.env.OPENROUTER_BASE_URL,
-        defaultHeaders: {
-          'HTTP-Referer': process.env.OPENROUTER_APP_URL,
-          'X-Title': process.env.OPENROUTER_APP_NAME,
-        },
+        httpReferer: process.env.OPENROUTER_APP_URL,
+        xTitle: process.env.OPENROUTER_APP_NAME,
       });
     }
 
@@ -65,7 +63,7 @@ class OpenRouterClient {
       systemPrompt,
     } = options;
 
-    const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [];
+    const messages: Message[] = [];
 
     if (systemPrompt) {
       messages.push({
@@ -84,11 +82,11 @@ class OpenRouterClient {
     for (let attempt = 0; attempt < this.maxRetries; attempt++) {
       try {
         const client = this.getClient();
-        const response = await client.chat.completions.create({
-          model: model ?? '',
+        const response = await client.chat.send({
+          model: model ?? 'anthropic/claude-3-5-sonnet',
           messages,
           temperature,
-          max_tokens: maxTokens,
+          maxTokens,
         });
 
         const choice = response.choices[0];
@@ -96,30 +94,34 @@ class OpenRouterClient {
           throw new OpenRouterError('No content in response');
         }
 
+        const content =
+          typeof choice.message.content === 'string'
+            ? choice.message.content
+            : choice.message.content
+                .map((block) => ('text' in block ? block.text : ''))
+                .join('');
+
         return {
-          content: choice.message.content,
+          content,
           model: response.model,
           usage: response.usage
             ? {
-                prompt_tokens: response.usage.prompt_tokens,
-                completion_tokens: response.usage.completion_tokens,
-                total_tokens: response.usage.total_tokens,
+                prompt_tokens: response.usage.promptTokens,
+                completion_tokens: response.usage.completionTokens,
+                total_tokens: response.usage.totalTokens,
               }
             : undefined,
         };
       } catch (error) {
         lastError = error as Error;
 
-        // Don't retry on client errors (4xx), only server errors (5xx) and network errors
-        if (error instanceof OpenAI.APIError) {
-          const errorStatus: number | undefined = error.status as
-            | number
-            | undefined;
-          const status = errorStatus ?? 500;
+        // Check for client errors (4xx) that shouldn't be retried
+        if (error instanceof Error && 'status' in error) {
+          const status = (error as Error & { status?: number }).status ?? 500;
           if (status >= 400 && status < 500) {
             throw new OpenRouterError(
               error.message,
-              error.code || 'CLIENT_ERROR',
+              'code' in error ? String(error.code) : 'CLIENT_ERROR',
               status,
             );
           }
