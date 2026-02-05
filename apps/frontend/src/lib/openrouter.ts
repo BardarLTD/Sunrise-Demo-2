@@ -1,5 +1,4 @@
 import OpenAI from 'openai';
-import { env } from './env';
 
 // Type for chat completion responses
 export interface ChatCompletionResponse {
@@ -34,11 +33,11 @@ class OpenRouterClient {
   private getClient(): OpenAI {
     if (!this.client) {
       this.client = new OpenAI({
-        apiKey: env.OPENROUTER_API_KEY,
-        baseURL: env.OPENROUTER_BASE_URL,
+        apiKey: process.env.OPENROUTER_API_KEY,
+        baseURL: process.env.OPENROUTER_BASE_URL,
         defaultHeaders: {
-          'HTTP-Referer': env.OPENROUTER_APP_URL,
-          'X-Title': env.OPENROUTER_APP_NAME,
+          'HTTP-Referer': process.env.OPENROUTER_APP_URL,
+          'X-Title': process.env.OPENROUTER_APP_NAME,
         },
       });
     }
@@ -60,7 +59,7 @@ class OpenRouterClient {
     } = {},
   ): Promise<ChatCompletionResponse> {
     const {
-      model = env.OPENROUTER_MODEL,
+      model = process.env.OPENROUTER_MODEL,
       temperature = 0.7,
       maxTokens = 4000,
       systemPrompt,
@@ -86,7 +85,7 @@ class OpenRouterClient {
       try {
         const client = this.getClient();
         const response = await client.chat.completions.create({
-          model,
+          model: model ?? '',
           messages,
           temperature,
           max_tokens: maxTokens,

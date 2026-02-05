@@ -1,6 +1,5 @@
 import mixpanel, { type Mixpanel } from 'mixpanel-browser';
 import type { UserProperties, FeedbackEvent } from '@/types/mixpanel';
-import { env } from './env';
 
 class MixpanelService {
   private static instance: MixpanelService | null = null;
@@ -26,10 +25,10 @@ class MixpanelService {
     this.initializing = true;
 
     try {
-      mixpanel.init(env.NEXT_PUBLIC_MIXPANEL_TOKEN, {
+      mixpanel.init(process.env.NEXT_PUBLIC_MIXPANEL_TOKEN ?? '', {
         persistence: 'cookie',
         track_pageview: false,
-        api_host: env.NEXT_PUBLIC_MIXPANEL_API_HOST,
+        api_host: process.env.NEXT_PUBLIC_MIXPANEL_API_HOST ?? '',
         debug: process.env.NODE_ENV === 'development',
         record_sessions_percent: 100,
         ignore_dnt: true,
@@ -49,7 +48,7 @@ class MixpanelService {
       if (process.env.NODE_ENV === 'development') {
         console.log(
           'Mixpanel initialized with API host:',
-          env.NEXT_PUBLIC_MIXPANEL_API_HOST,
+          process.env.NEXT_PUBLIC_MIXPANEL_API_HOST,
         );
       }
     } catch (error) {

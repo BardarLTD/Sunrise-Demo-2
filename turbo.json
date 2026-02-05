@@ -1,22 +1,37 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"]
+      "outputs": [".next/**", "dist/**"],
+      "env": [
+        "NEXT_PUBLIC_MIXPANEL_TOKEN",
+        "NEXT_PUBLIC_MIXPANEL_API_HOST",
+        "OPENROUTER_API_KEY",
+        "OPENROUTER_MODEL",
+        "OPENROUTER_APP_NAME"
+      ]
+    },
+    "lint": {},
+    "start": {
+      "dependsOn": ["^start"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "lint": {
-      "dependsOn": ["^build"]
+    "clean": {
+      "dependsOn": ["^clean"]
+    },
+    "cache:clean": {
+      "dependsOn": ["^cache:clean"]
+    },
+    "gen-icons": {
+      "cache": false
     },
     "typecheck": {
-      "dependsOn": ["^build"]
-    },
-    "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^typecheck"]
     }
   }
 }

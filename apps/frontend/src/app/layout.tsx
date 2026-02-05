@@ -4,7 +4,6 @@ import { IBM_Plex_Sans_Condensed, Roboto } from 'next/font/google';
 import { Providers } from './providers';
 import MixpanelInit from '@/components/MixpanelInit';
 import UserInfoModal from '@/components/UserInfoModal';
-import '@/lib/env'; // Validate environment variables at startup
 import './globals.css';
 
 const ibmPlexSansCondensed = IBM_Plex_Sans_Condensed({
