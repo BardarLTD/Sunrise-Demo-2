@@ -146,13 +146,13 @@ export function GeneratedCommunityCard({
   community,
 }: GeneratedCommunityCardProps) {
   return (
-    <div className="w-full max-w-[850px] mx-auto rounded-2xl border-2 border-[#595854] bg-[#222221] shadow-2xl">
+    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-[#595854] bg-[#222221] shadow-2xl">
       <div className="p-4 lg:p-6 xl:p-8">
         {/* Header with Profile Circle */}
         <div className="mb-4 lg:mb-6 flex items-start gap-3 lg:gap-4">
           {/* Profile Circle */}
           <div
-            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border-2 border-[#595854] text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
+            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border border-[#595854] text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
           >
             {getInitials(community.name)}
           </div>
@@ -312,7 +312,7 @@ export function GeneratedCommunityCard({
               // No navigation - just collect feedback
             }}
             answerType="text"
-            className="flex-1 rounded-lg border border-white/40 bg-gradient-to-br from-blue-600/80 to-blue-700/80 px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:from-blue-600 hover:to-blue-700 hover:border-white/30 hover:shadow-lg"
+            className="flex-1 rounded-lg bg-[#1e52f1] px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:bg-[#1e52f1]/90"
           >
             <>
               {getActionButtonText(

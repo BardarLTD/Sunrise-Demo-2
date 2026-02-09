@@ -11,8 +11,8 @@ export function WhiteboardBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, #1D1D1C 2px, transparent 2px),
-            linear-gradient(to bottom, #1D1D1C 2px, transparent 2px)
+            linear-gradient(to right, #1D1D1C 1px, transparent 1px),
+            linear-gradient(to bottom, #1D1D1C 1px, transparent 1px)
           `,
           backgroundSize: '24px 24px',
         }}

@@ -62,7 +62,7 @@ export function ChatDialog({
 
       {/* Minimal prompt box */}
       <div
-        className="relative w-full overflow-hidden rounded-xl border-2 border-[#595854] transition-all duration-300"
+        className="relative w-full overflow-hidden rounded-xl border border-[#595854] transition-all duration-300"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -109,7 +109,7 @@ export function ChatDialog({
             <button
               type="submit"
               disabled={!message.trim()}
-              className="flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 rounded-lg bg-[#1e52f1] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1e52f1]/90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Continue
               <ArrowRight className="h-4 w-4" />

@@ -85,7 +85,7 @@ export function CustomerControlPanel({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="w-full max-w-3xl rounded-2xl border-2 border-[#595854] bg-[#222221] p-4 lg:p-6 xl:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-3xl rounded-2xl border border-[#595854] bg-[#222221] p-4 lg:p-6 xl:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
           >
             {/* Header */}
             <div className="mb-3 lg:mb-5 text-center">
@@ -121,7 +121,7 @@ export function CustomerControlPanel({
             </div>
 
             {/* Alignment Range */}
-            <div className="mb-3 lg:mb-5 rounded-xl border-2 border-[#595854] bg-white/5 p-3 lg:p-4 xl:p-6">
+            <div className="mb-3 lg:mb-5 rounded-xl border border-[#595854] bg-white/5 p-3 lg:p-4 xl:p-6">
               <p className="mb-2 lg:mb-3 xl:mb-4 text-xs lg:text-sm font-medium text-slate-300">
                 Alignment Range
               </p>
@@ -160,7 +160,7 @@ export function CustomerControlPanel({
                 {customers.slice(0, 8).map((customer) => (
                   <div
                     key={customer.id}
-                    className={`flex h-9 w-9 lg:h-10 lg:w-10 xl:h-12 xl:w-12 items-center justify-center rounded-full border-2 border-[#595854] text-xs lg:text-sm font-bold text-white transition-transform hover:scale-110 hover:border-emerald-400/50 ${getColorFromName(customer.name)}`}
+                    className={`flex h-9 w-9 lg:h-10 lg:w-10 xl:h-12 xl:w-12 items-center justify-center rounded-full border border-[#595854] text-xs lg:text-sm font-bold text-white transition-transform hover:scale-110 hover:border-emerald-400/50 ${getColorFromName(customer.name)}`}
                   >
                     {getInitials(customer.name)}
                   </div>
@@ -177,7 +177,7 @@ export function CustomerControlPanel({
             <div className="flex flex-col sm:flex-row gap-2 lg:gap-3">
               <button
                 onClick={handleViewCustomers}
-                className="group relative flex-1 overflow-hidden rounded-xl border-2 border-[#595854] py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-white transition-all hover:text-white"
+                className="group relative flex-1 overflow-hidden rounded-xl border border-[#595854] py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-white transition-all hover:text-white"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
@@ -189,12 +189,9 @@ export function CustomerControlPanel({
 
               <button
                 onClick={handleViewCommunities}
-                className="group relative flex-1 overflow-hidden rounded-xl border border-[#1e52f1]/30 py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-blue-300 transition-all hover:border-[#1e52f1]/50 hover:text-blue-200"
+                className="group relative flex-1 overflow-hidden rounded-xl bg-[#1e52f1] py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-white transition-all hover:bg-[#1e52f1]/90"
               >
-                <div className="absolute inset-0 bg-emerald-900/20 transition-opacity duration-300 group-hover:bg-emerald-900/30" />
-                <span className="relative z-10">
-                  See Marketing Recommendations
-                </span>
+                See Marketing Recommendations
               </button>
             </div>
           </motion.div>
@@ -208,7 +205,7 @@ export function CustomerControlPanel({
           >
             {/* Left: Control Panel (collapsed) */}
             <div className="flex w-64 lg:w-72 xl:w-80 shrink-0 flex-col justify-center">
-              <div className="rounded-2xl border-2 border-[#595854] bg-[#222221] p-4 lg:p-5 xl:p-6 shadow-2xl">
+              <div className="rounded-2xl border border-[#595854] bg-[#222221] p-4 lg:p-5 xl:p-6 shadow-2xl">
                 <h3 className="mb-3 lg:mb-4 text-lg lg:text-xl font-bold text-white">
                   Customer Analysis
                 </h3>
@@ -271,13 +268,13 @@ export function CustomerControlPanel({
                 <div className="flex gap-2">
                   <button
                     onClick={goToPrev}
-                    className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border-2 border-[#595854] bg-white/5 text-white transition-colors hover:bg-white/10"
+                    className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border border-[#595854] bg-white/5 text-white transition-colors hover:bg-white/10"
                   >
                     <ChevronLeft className="h-4 w-4 lg:h-5 lg:w-5" />
                   </button>
                   <button
                     onClick={goToNext}
-                    className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border-2 border-[#595854] bg-white/5 text-white transition-colors hover:bg-white/10"
+                    className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border border-[#595854] bg-white/5 text-white transition-colors hover:bg-white/10"
                   >
                     <ChevronRight className="h-4 w-4 lg:h-5 lg:w-5" />
                   </button>
@@ -292,14 +289,14 @@ export function CustomerControlPanel({
                       // No navigation - just collect feedback
                     }}
                     answerType="text"
-                    className="w-full rounded-lg border border-[#1e52f1]/30 bg-[#1e52f1]/10 py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-blue-300 transition-colors hover:border-[#1e52f1]/50 hover:bg-[#1e52f1]/20 hover:text-blue-200"
+                    className="w-full rounded-lg bg-[#1e52f1] py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-[#1e52f1]/90"
                   />
                 </div>
 
                 {/* Close Button */}
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="mt-2 lg:mt-3 w-full rounded-lg border-2 border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+                  className="mt-2 lg:mt-3 w-full rounded-lg border border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   Close Customer View
                 </button>

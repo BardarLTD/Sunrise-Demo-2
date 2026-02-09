@@ -67,7 +67,7 @@ export function GeneratedCustomerCard({
 }: GeneratedCustomerCardProps) {
   return (
     <div
-      className={`relative flex h-auto min-h-[420px] w-full max-w-[600px] lg:max-w-[700px] xl:max-w-[820px] shrink-0 flex-col overflow-hidden rounded-2xl border-2 border-[#595854] bg-[#222221] p-6 lg:p-8 shadow-2xl transition-all duration-300 ${
+      className={`relative flex h-auto min-h-[420px] w-full max-w-[600px] lg:max-w-[700px] xl:max-w-[820px] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#595854] bg-[#222221] p-6 lg:p-8 shadow-2xl transition-all duration-300 ${
         isActive ? 'scale-105 opacity-100' : 'scale-95 opacity-60'
       }`}
     >
@@ -76,7 +76,7 @@ export function GeneratedCustomerCard({
         <div className="flex items-start gap-3 lg:gap-4">
           {/* Profile Circle */}
           <div
-            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border-2 border-[#595854] text-base lg:text-lg font-bold text-white ${getColorFromName(customer.name)}`}
+            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border border-[#595854] text-base lg:text-lg font-bold text-white ${getColorFromName(customer.name)}`}
           >
             {getInitials(customer.name)}
           </div>
