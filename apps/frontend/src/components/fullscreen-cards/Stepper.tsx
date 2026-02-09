@@ -9,7 +9,7 @@ interface StepperProps {
 export function Stepper({ steps, currentStep, onStepClick }: StepperProps) {
   return (
     <div className="fixed right-6 top-1/2 z-50 -translate-y-1/2">
-      <div className="flex flex-col items-center gap-1 rounded-2xl bg-[#222221] p-2">
+      <div className="flex flex-col items-center gap-1 rounded-2xl bg-[#2A2A29] p-2">
         {Array.from({ length: steps }, (_, index) => (
           <button
             key={index}

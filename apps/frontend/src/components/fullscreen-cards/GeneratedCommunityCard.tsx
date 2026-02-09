@@ -146,7 +146,7 @@ export function GeneratedCommunityCard({
   community,
 }: GeneratedCommunityCardProps) {
   return (
-    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-[#595854] bg-[#222221] shadow-2xl">
+    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-[#595854] bg-[#2A2A29] shadow-2xl">
       <div className="p-4 lg:p-6 xl:p-8">
         {/* Header with Profile Circle */}
         <div className="mb-4 lg:mb-6 flex items-start gap-3 lg:gap-4">
@@ -340,7 +340,7 @@ export function GeneratedCommunityCard({
               className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
               style={{ backgroundImage: 'url(/gradient-bg.png)' }}
             />
-            <div className="absolute inset-0 bg-[#222221] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+            <div className="absolute inset-0 bg-[#2A2A29] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
             <Bookmark
               size={16}
               className="relative z-10 lg:w-[18px] lg:h-[18px]"
