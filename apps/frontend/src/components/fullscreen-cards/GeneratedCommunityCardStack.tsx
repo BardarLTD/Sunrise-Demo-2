@@ -34,7 +34,7 @@ export function GeneratedCommunityCardStack({
     <div className="flex h-full w-full gap-4 lg:gap-6 px-4 lg:px-8 py-4">
       {/* Left: Navigation Panel */}
       <div className="flex w-64 lg:w-72 xl:w-80 shrink-0 flex-col justify-start py-4">
-        <div className="rounded-2xl border border-white/10 bg-[#222221] p-4 lg:p-5 xl:p-6 shadow-2xl">
+        <div className="rounded-2xl border border-white/30 bg-[#222221] p-4 lg:p-5 xl:p-6 shadow-2xl">
           <h3 className="mb-3 lg:mb-4 text-lg lg:text-xl font-bold text-white">
             Channel Analysis
           </h3>
@@ -70,13 +70,13 @@ export function GeneratedCommunityCardStack({
           <div className="flex gap-2">
             <button
               onClick={goToPrev}
-              className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10"
+              className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border border-white/30 bg-white/5 text-white transition-colors hover:bg-white/10"
             >
               <ChevronLeft className="h-4 w-4 lg:h-5 lg:w-5" />
             </button>
             <button
               onClick={goToNext}
-              className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10"
+              className="flex h-9 lg:h-10 flex-1 items-center justify-center rounded-lg border border-white/30 bg-white/5 text-white transition-colors hover:bg-white/10"
             >
               <ChevronRight className="h-4 w-4 lg:h-5 lg:w-5" />
             </button>

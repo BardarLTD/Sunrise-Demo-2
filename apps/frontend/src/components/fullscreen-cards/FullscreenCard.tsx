@@ -59,7 +59,7 @@ export function FullscreenCard({
               onClick={onNext}
               size="lg"
               variant="secondary"
-              className="border-white/20 bg-white/10 text-white backdrop-blur hover:bg-white/20"
+              className="border-white/40 bg-white/10 text-white backdrop-blur hover:bg-white/20"
             >
               Continue
             </Button>

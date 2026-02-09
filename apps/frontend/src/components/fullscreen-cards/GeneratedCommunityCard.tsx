@@ -146,13 +146,13 @@ export function GeneratedCommunityCard({
   community,
 }: GeneratedCommunityCardProps) {
   return (
-    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-white/10 bg-[#222221] shadow-2xl">
+    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-white/30 bg-[#222221] shadow-2xl">
       <div className="p-4 lg:p-6 xl:p-8">
         {/* Header with Profile Circle */}
         <div className="mb-4 lg:mb-6 flex items-start gap-3 lg:gap-4">
           {/* Profile Circle */}
           <div
-            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border-2 border-white/20 text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
+            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border-2 border-white/40 text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
           >
             {getInitials(community.name)}
           </div>
@@ -312,7 +312,7 @@ export function GeneratedCommunityCard({
               // No navigation - just collect feedback
             }}
             answerType="text"
-            className="flex-1 rounded-lg border border-white/20 bg-gradient-to-br from-blue-600/80 to-blue-700/80 px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:from-blue-600 hover:to-blue-700 hover:border-white/30 hover:shadow-lg"
+            className="flex-1 rounded-lg border border-white/40 bg-gradient-to-br from-blue-600/80 to-blue-700/80 px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:from-blue-600 hover:to-blue-700 hover:border-white/30 hover:shadow-lg"
           >
             <>
               {getActionButtonText(
@@ -334,7 +334,7 @@ export function GeneratedCommunityCard({
                 timestamp: new Date().toISOString(),
               });
             }}
-            className="flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30 hover:shadow-lg sm:flex-none"
+            className="flex items-center justify-center gap-2 rounded-lg border border-white/40 bg-white/5 px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30 hover:shadow-lg sm:flex-none"
           >
             <Bookmark size={16} className="lg:w-[18px] lg:h-[18px]" />
             <span className="sm:inline">Save channel</span>

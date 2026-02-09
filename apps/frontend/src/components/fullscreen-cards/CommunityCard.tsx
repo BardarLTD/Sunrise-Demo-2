@@ -166,7 +166,7 @@ export function CommunityCard({ community, isBestValue }: CommunityCardProps) {
   );
 
   return (
-    <div className="relative flex h-full w-full overflow-hidden rounded-3xl border border-white/10 bg-[#232323] shadow-2xl">
+    <div className="relative flex h-full w-full overflow-hidden rounded-3xl border border-white/30 bg-[#232323] shadow-2xl">
       {/* Best Value Badge */}
       {isBestValue && (
         <motion.div
@@ -183,7 +183,7 @@ export function CommunityCard({ community, isBestValue }: CommunityCardProps) {
       {/* Left Side - Header Section */}
       <div className="flex w-2/5 shrink-0 flex-col p-6">
         {/* Community Image */}
-        <div className="relative mb-4 h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-2 border-white/10 shadow-lg">
+        <div className="relative mb-4 h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-2 border-white/30 shadow-lg">
           <Image
             src={community.image}
             alt={community.name}

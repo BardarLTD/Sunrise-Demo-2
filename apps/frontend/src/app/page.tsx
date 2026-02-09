@@ -271,7 +271,7 @@ export default function Home() {
               e.currentTarget.setAttribute('data-hover', 'true')
             }
             onMouseLeave={(e) => e.currentTarget.removeAttribute('data-hover')}
-            className="group relative overflow-hidden rounded-xl border border-white/10 px-6 lg:px-8 py-3 text-sm lg:text-base font-medium text-slate-300 transition-all hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group relative overflow-hidden rounded-xl border border-white/30 px-6 lg:px-8 py-3 text-sm lg:text-base font-medium text-slate-300 transition-all hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {/* Gradient background on hover */}
             <div
@@ -294,7 +294,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4">
           <div className="max-w-2xl w-full">
             {/* Sign-up Box */}
-            <div className="rounded-2xl border border-white/10 bg-[#222221]/80 backdrop-blur-sm p-8 text-center">
+            <div className="rounded-2xl border border-white/30 bg-[#222221]/80 backdrop-blur-sm p-8 text-center">
               <h2 className="text-3xl font-bold text-white mb-6">
                 Ready to Reach Your Customers?
               </h2>
@@ -307,7 +307,7 @@ export default function Home() {
               </p>
 
               {/* Pricing Section */}
-              <div className="border-t border-white/10 pt-6 mb-8">
+              <div className="border-t border-white/30 pt-6 mb-8">
                 <div className="flex items-baseline justify-center gap-2 mb-3">
                   <span className="text-4xl font-bold text-emerald-400">
                     $100
@@ -340,7 +340,7 @@ export default function Home() {
                     // Feedback is collected via Mixpanel in FeedbackButton
                   }}
                   answerType="text"
-                  className="relative overflow-hidden rounded-xl border-2 border-white/20 bg-transparent px-8 py-4 text-base font-medium text-slate-300 transition-all hover:border-white/40 hover:text-white"
+                  className="relative overflow-hidden rounded-xl border-2 border-white/40 bg-transparent px-8 py-4 text-base font-medium text-slate-300 transition-all hover:border-white/40 hover:text-white"
                 >
                   <>Maybe Later</>
                 </FeedbackButton>
