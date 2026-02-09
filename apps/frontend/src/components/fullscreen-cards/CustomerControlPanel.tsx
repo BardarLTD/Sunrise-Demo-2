@@ -85,7 +85,7 @@ export function CustomerControlPanel({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="w-full max-w-3xl rounded-2xl border border-white/10 bg-[#232323] p-4 lg:p-6 xl:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-3xl rounded-2xl border border-white/10 bg-[#222221] p-4 lg:p-6 xl:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
           >
             {/* Header */}
             <div className="mb-3 lg:mb-5 text-center">
@@ -208,7 +208,7 @@ export function CustomerControlPanel({
           >
             {/* Left: Control Panel (collapsed) */}
             <div className="flex w-64 lg:w-72 xl:w-80 shrink-0 flex-col justify-center">
-              <div className="rounded-2xl border border-white/10 bg-[#232323] p-4 lg:p-5 xl:p-6 shadow-2xl">
+              <div className="rounded-2xl border border-white/10 bg-[#222221] p-4 lg:p-5 xl:p-6 shadow-2xl">
                 <h3 className="mb-3 lg:mb-4 text-lg lg:text-xl font-bold text-white">
                   Customer Analysis
                 </h3>

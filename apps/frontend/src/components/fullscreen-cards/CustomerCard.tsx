@@ -45,7 +45,7 @@ export function CustomerCard({ customer, isActive }: CustomerCardProps) {
 
   return (
     <div
-      className={`relative flex h-[380px] w-[820px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#232323] shadow-2xl transition-all duration-300 ${
+      className={`relative flex h-[380px] w-[820px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#222221] shadow-2xl transition-all duration-300 ${
         isActive ? 'scale-105 opacity-100' : 'scale-95 opacity-60'
       }`}
     >

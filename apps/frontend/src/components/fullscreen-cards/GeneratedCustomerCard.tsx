@@ -67,7 +67,7 @@ export function GeneratedCustomerCard({
 }: GeneratedCustomerCardProps) {
   return (
     <div
-      className={`relative flex h-auto min-h-[420px] w-full max-w-[600px] lg:max-w-[700px] xl:max-w-[820px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#232323] to-[#1a1a1a] p-6 lg:p-8 shadow-2xl transition-all duration-300 ${
+      className={`relative flex h-auto min-h-[420px] w-full max-w-[600px] lg:max-w-[700px] xl:max-w-[820px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#222221] p-6 lg:p-8 shadow-2xl transition-all duration-300 ${
         isActive ? 'scale-105 opacity-100' : 'scale-95 opacity-60'
       }`}
     >

@@ -146,7 +146,7 @@ export function GeneratedCommunityCard({
   community,
 }: GeneratedCommunityCardProps) {
   return (
-    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-white/10 bg-gradient-to-br from-[#232323] to-[#1a1a1a] shadow-2xl">
+    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-white/10 bg-[#222221] shadow-2xl">
       <div className="p-4 lg:p-6 xl:p-8">
         {/* Header with Profile Circle */}
         <div className="mb-4 lg:mb-6 flex items-start gap-3 lg:gap-4">

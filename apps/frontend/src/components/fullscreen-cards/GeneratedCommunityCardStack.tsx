@@ -34,7 +34,7 @@ export function GeneratedCommunityCardStack({
     <div className="flex h-full w-full gap-4 lg:gap-6 px-4 lg:px-8 py-4">
       {/* Left: Navigation Panel */}
       <div className="flex w-64 lg:w-72 xl:w-80 shrink-0 flex-col justify-start py-4">
-        <div className="rounded-2xl border border-white/10 bg-[#232323] p-4 lg:p-5 xl:p-6 shadow-2xl">
+        <div className="rounded-2xl border border-white/10 bg-[#222221] p-4 lg:p-5 xl:p-6 shadow-2xl">
           <h3 className="mb-3 lg:mb-4 text-lg lg:text-xl font-bold text-white">
             Channel Analysis
           </h3>
