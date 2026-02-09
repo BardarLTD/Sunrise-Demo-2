@@ -56,7 +56,7 @@ export function ChatDialog({
       <h1 className="mb-4 text-center text-5xl font-bold text-white">
         {welcomeTitle}
       </h1>
-      <p className="mb-8 max-w-lg text-center text-base leading-relaxed text-slate-300">
+      <p className="mb-8 max-w-lg text-center text-base leading-relaxed text-slate-400">
         {welcomeMessage}
       </p>
 
@@ -89,7 +89,7 @@ export function ChatDialog({
             className={`w-full resize-none border-none bg-transparent px-5 py-4 text-base text-white focus:outline-none transition-all duration-500 ease-out ${
               isHovered
                 ? 'placeholder:text-white'
-                : 'placeholder:text-slate-500'
+                : 'placeholder:text-slate-300'
             }`}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
