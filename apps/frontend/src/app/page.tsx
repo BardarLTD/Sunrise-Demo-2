@@ -115,7 +115,7 @@ export default function Home() {
               // No navigation - just collect feedback
             }}
             answerType="text"
-            className="group relative overflow-hidden rounded-xl border-2 border-emerald-500/30 bg-emerald-900/20 px-6 py-3 text-base font-medium text-emerald-400 transition-all hover:border-emerald-500/50 hover:bg-emerald-900/30 hover:text-emerald-300"
+            className="group relative overflow-hidden rounded-xl border-2 border-[#1e52f1]/30 bg-[#1e52f1]/10 px-6 py-3 text-base font-medium text-blue-300 transition-all hover:border-[#1e52f1]/50 hover:bg-[#1e52f1]/20 hover:text-blue-200"
           >
             <>Don&apos;t know your target customer? Discover with data</>
           </FeedbackButton>
@@ -258,7 +258,7 @@ export default function Home() {
               // No navigation - just collect feedback
             }}
             answerType="text"
-            className="group relative overflow-hidden rounded-xl border-2 border-emerald-500/30 bg-emerald-900/20 px-4 lg:px-6 py-3 text-sm lg:text-base font-medium text-emerald-400 transition-all hover:border-emerald-500/50 hover:bg-emerald-900/30 hover:text-emerald-300"
+            className="group relative overflow-hidden rounded-xl border-2 border-[#1e52f1]/30 bg-[#1e52f1]/10 px-4 lg:px-6 py-3 text-sm lg:text-base font-medium text-blue-300 transition-all hover:border-[#1e52f1]/50 hover:bg-[#1e52f1]/20 hover:text-blue-200"
           >
             <>See content and trend insights instead</>
           </FeedbackButton>
@@ -327,7 +327,7 @@ export default function Home() {
                   href="https://buy.stripe.com/6oUaEZbYv7pLf8j8Bs9R609"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-xl bg-emerald-600 px-8 py-4 text-base font-medium text-white transition-all hover:bg-emerald-500"
+                  className="group relative overflow-hidden rounded-xl bg-[#1e52f1] px-8 py-4 text-base font-medium text-white transition-all hover:bg-[#1e52f1]/90"
                 >
                   Sign Up
                 </a>

@@ -189,7 +189,7 @@ export function CustomerControlPanel({
 
               <button
                 onClick={handleViewCommunities}
-                className="group relative flex-1 overflow-hidden rounded-xl border border-emerald-500/30 py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-emerald-400 transition-all hover:border-emerald-500/50 hover:text-emerald-300"
+                className="group relative flex-1 overflow-hidden rounded-xl border border-[#1e52f1]/30 py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-blue-300 transition-all hover:border-[#1e52f1]/50 hover:text-blue-200"
               >
                 <div className="absolute inset-0 bg-emerald-900/20 transition-opacity duration-300 group-hover:bg-emerald-900/30" />
                 <span className="relative z-10">
@@ -292,7 +292,7 @@ export function CustomerControlPanel({
                       // No navigation - just collect feedback
                     }}
                     answerType="text"
-                    className="w-full rounded-lg border border-emerald-500/30 bg-emerald-900/20 py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-emerald-400 transition-colors hover:border-emerald-500/50 hover:bg-emerald-900/30 hover:text-emerald-300"
+                    className="w-full rounded-lg border border-[#1e52f1]/30 bg-[#1e52f1]/10 py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-blue-300 transition-colors hover:border-[#1e52f1]/50 hover:bg-[#1e52f1]/20 hover:text-blue-200"
                   />
                 </div>
 
