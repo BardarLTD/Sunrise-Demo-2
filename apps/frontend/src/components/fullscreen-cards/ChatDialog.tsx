@@ -62,7 +62,7 @@ export function ChatDialog({
 
       {/* Minimal prompt box */}
       <div
-        className="relative w-full overflow-hidden rounded-xl border border-white/30 transition-all duration-300"
+        className="relative w-full overflow-hidden rounded-xl border-2 border-[#595854] transition-all duration-300"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

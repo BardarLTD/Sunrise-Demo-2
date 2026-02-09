@@ -146,13 +146,13 @@ export function GeneratedCommunityCard({
   community,
 }: GeneratedCommunityCardProps) {
   return (
-    <div className="w-full max-w-[850px] mx-auto rounded-2xl border border-white/30 bg-[#222221] shadow-2xl">
+    <div className="w-full max-w-[850px] mx-auto rounded-2xl border-2 border-[#595854] bg-[#222221] shadow-2xl">
       <div className="p-4 lg:p-6 xl:p-8">
         {/* Header with Profile Circle */}
         <div className="mb-4 lg:mb-6 flex items-start gap-3 lg:gap-4">
           {/* Profile Circle */}
           <div
-            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border-2 border-white/40 text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
+            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border-2 border-[#595854] text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
           >
             {getInitials(community.name)}
           </div>
