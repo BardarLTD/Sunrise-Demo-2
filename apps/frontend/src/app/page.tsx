@@ -313,8 +313,7 @@ export default function Home() {
                   <span className="text-xl text-slate-400">/month</span>
                 </div>
                 <p className="text-sm text-slate-400 max-w-lg mx-auto">
-                  A &quot;track&quot; can be a persona, a competitor, or an
-                  online audience such as a social media following.
+                  Pricing is approximate while we are pre-launch.
                 </p>
               </div>
 

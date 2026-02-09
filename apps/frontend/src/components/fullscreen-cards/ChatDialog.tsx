@@ -56,7 +56,7 @@ export function ChatDialog({
       <h1 className="mb-4 text-center text-5xl font-bold text-white">
         {welcomeTitle}
       </h1>
-      <p className="mb-8 max-w-lg text-center text-base leading-relaxed text-slate-400">
+      <p className="mb-8 max-w-lg text-center text-base leading-relaxed text-slate-300">
         {welcomeMessage}
       </p>
 
@@ -102,7 +102,7 @@ export function ChatDialog({
             <button
               type="button"
               onClick={handleGeneratePrompt}
-              className="text-sm font-medium text-slate-400 transition-colors hover:text-white"
+              className="text-sm font-medium text-slate-300 transition-colors hover:text-white"
             >
               Generate Prompt
             </button>
