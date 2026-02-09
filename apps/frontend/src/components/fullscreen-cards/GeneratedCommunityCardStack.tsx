@@ -91,7 +91,7 @@ export function GeneratedCommunityCardStack({
                 // No navigation - just collect feedback
               }}
               answerType="text"
-              className="w-full rounded-lg border border-emerald-500/30 bg-emerald-900/20 py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-emerald-400 transition-colors hover:border-emerald-500/50 hover:bg-emerald-900/30 hover:text-emerald-300"
+              className="w-full rounded-lg bg-[#1e52f1] py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-[#1e52f1]/90"
             >
               <>Filter by channel and budget</>
             </FeedbackButton>
