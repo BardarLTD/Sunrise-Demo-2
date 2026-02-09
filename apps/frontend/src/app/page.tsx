@@ -279,7 +279,7 @@ export default function Home() {
               style={{ backgroundImage: 'url(/gradient-bg.png)' }}
             />
             {/* Solid background */}
-            <div className="absolute inset-0 bg-[#232323] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+            <div className="absolute inset-0 bg-[#222221] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
             <span className="relative z-10">Complete Demo</span>
           </button>
         </div>
@@ -294,7 +294,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4">
           <div className="max-w-2xl w-full">
             {/* Sign-up Box */}
-            <div className="rounded-2xl border border-white/10 bg-[#1a1a1a]/80 backdrop-blur-sm p-8 text-center">
+            <div className="rounded-2xl border border-white/10 bg-[#222221]/80 backdrop-blur-sm p-8 text-center">
               <h2 className="text-3xl font-bold text-white mb-6">
                 Ready to Reach Your Customers?
               </h2>

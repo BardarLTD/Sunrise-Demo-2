@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export function Header() {
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center justify-between bg-[#1a1a1a] px-6">
+    <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center justify-between bg-[#222221] px-6">
       {/* Logo */}
       <div className="flex items-center">
         <Image
