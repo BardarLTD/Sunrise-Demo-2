@@ -14,7 +14,7 @@ export function WhiteboardBackground() {
             linear-gradient(to right, #1D1D1C 1px, transparent 1px),
             linear-gradient(to bottom, #1D1D1C 1px, transparent 1px)
           `,
-          backgroundSize: '24px 24px',
+          backgroundSize: '72px 72px',
         }}
       />
     </div>
