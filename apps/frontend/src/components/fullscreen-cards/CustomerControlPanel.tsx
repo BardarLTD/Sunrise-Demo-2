@@ -183,7 +183,7 @@ export function CustomerControlPanel({
                   className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
                   style={{ backgroundImage: 'url(/gradient-bg.png)' }}
                 />
-                <div className="absolute inset-0 bg-[#2a2a2a] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+                <div className="absolute inset-0 bg-[#2A2A29] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
                 <span className="relative z-10">View Customers</span>
               </button>
 

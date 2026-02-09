@@ -76,7 +76,7 @@ export function ChatDialog({
         />
         {/* Solid background */}
         <div
-          className="absolute inset-0 bg-[#232323] transition-opacity duration-500 ease-out"
+          className="absolute inset-0 bg-[#2A2A29] transition-opacity duration-500 ease-out"
           style={{ opacity: isHovered ? 0.7 : 1 }}
         />
 
