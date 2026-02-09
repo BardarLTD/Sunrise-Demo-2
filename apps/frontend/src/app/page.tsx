@@ -309,10 +309,8 @@ export default function Home() {
               {/* Pricing Section */}
               <div className="border-t border-white/30 pt-6 mb-8">
                 <div className="flex items-baseline justify-center gap-2 mb-3">
-                  <span className="text-4xl font-bold text-emerald-400">
-                    $100
-                  </span>
-                  <span className="text-xl text-slate-400">/track/month</span>
+                  <span className="text-4xl font-bold text-white">$100</span>
+                  <span className="text-xl text-slate-400">/month</span>
                 </div>
                 <p className="text-sm text-slate-400 max-w-lg mx-auto">
                   A &quot;track&quot; can be a persona, a competitor, or an
