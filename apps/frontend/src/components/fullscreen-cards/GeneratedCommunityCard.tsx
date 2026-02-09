@@ -334,10 +334,18 @@ export function GeneratedCommunityCard({
                 timestamp: new Date().toISOString(),
               });
             }}
-            className="flex items-center justify-center gap-2 rounded-lg border border-white/40 bg-white/5 px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30 hover:shadow-lg sm:flex-none"
+            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-lg border border-[#595854] px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-slate-300 transition-all hover:text-white sm:flex-none"
           >
-            <Bookmark size={16} className="lg:w-[18px] lg:h-[18px]" />
-            <span className="sm:inline">Save channel</span>
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
+              style={{ backgroundImage: 'url(/gradient-bg.png)' }}
+            />
+            <div className="absolute inset-0 bg-[#222221] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+            <Bookmark
+              size={16}
+              className="relative z-10 lg:w-[18px] lg:h-[18px]"
+            />
+            <span className="relative z-10 sm:inline">Save channel</span>
           </button>
         </div>
       </div>

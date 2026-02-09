@@ -340,9 +340,14 @@ export default function Home() {
                     // Feedback is collected via Mixpanel in FeedbackButton
                   }}
                   answerType="text"
-                  className="relative overflow-hidden rounded-xl border border-[#595854] bg-transparent px-8 py-4 text-base font-medium text-slate-300 transition-all hover:border-white/40 hover:text-white"
+                  className="group relative overflow-hidden rounded-xl border border-[#595854] px-8 py-4 text-base font-medium text-slate-300 transition-all hover:text-white"
                 >
-                  <>Maybe Later</>
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
+                    style={{ backgroundImage: 'url(/gradient-bg.png)' }}
+                  />
+                  <div className="absolute inset-0 bg-[#222221] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+                  <span className="relative z-10">Maybe Later</span>
                 </FeedbackButton>
               </div>
             </div>

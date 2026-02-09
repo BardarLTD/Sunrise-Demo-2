@@ -177,13 +177,13 @@ export function CustomerControlPanel({
             <div className="flex flex-col sm:flex-row gap-2 lg:gap-3">
               <button
                 onClick={handleViewCustomers}
-                className="group relative flex-1 overflow-hidden rounded-xl border border-[#595854] py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-white transition-all hover:text-white"
+                className="group relative flex-1 overflow-hidden rounded-xl border border-[#595854] py-2.5 lg:py-3 xl:py-4 text-sm lg:text-base font-medium text-slate-300 transition-all hover:text-white"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
                   style={{ backgroundImage: 'url(/gradient-bg.png)' }}
                 />
-                <div className="absolute inset-0 bg-[#2A2A29] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+                <div className="absolute inset-0 bg-[#222221] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
                 <span className="relative z-10">View Customers</span>
               </button>
 
@@ -296,9 +296,14 @@ export function CustomerControlPanel({
                 {/* Close Button */}
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="mt-2 lg:mt-3 w-full rounded-lg border border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+                  className="group relative mt-2 lg:mt-3 w-full overflow-hidden rounded-lg border border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm text-slate-300 transition-all hover:text-white"
                 >
-                  Close Customer View
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
+                    style={{ backgroundImage: 'url(/gradient-bg.png)' }}
+                  />
+                  <div className="absolute inset-0 bg-[#222221] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+                  <span className="relative z-10">Close Customer View</span>
                 </button>
               </div>
             </div>
