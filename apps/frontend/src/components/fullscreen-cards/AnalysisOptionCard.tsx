@@ -43,7 +43,7 @@ export const AnalysisOptionCard: React.FC<AnalysisOptionCardProps> = ({
       </div>
 
       {/* Text content section - 40% height */}
-      <div className="relative z-10 flex h-[40%] flex-col justify-center border-t border-[#595854] p-6">
+      <div className="relative z-10 flex h-[40%] flex-col justify-center border-t border-[#595854] p-6 text-center">
         <h3 className="mb-2 text-lg font-bold text-white lg:text-xl">
           {title}
         </h3>
