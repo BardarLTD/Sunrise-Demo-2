@@ -1,7 +1,9 @@
+export { AnalysisOptionCard } from './AnalysisOptionCard';
 export { ChatDialog } from './ChatDialog';
 export { CommunityCard } from './CommunityCard';
 export { CommunityCardStack } from './CommunityCardStack';
 export { CosmicBackground } from './CosmicBackground';
+export { CustomerAnalysisPage } from './CustomerAnalysisPage';
 export { CustomerCard } from './CustomerCard';
 export { CustomerCarousel } from './CustomerCarousel';
 export { CustomerControlPanel } from './CustomerControlPanel';

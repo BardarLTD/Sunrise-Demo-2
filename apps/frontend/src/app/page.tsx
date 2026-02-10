@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ChatDialog,
+  CustomerAnalysisPage,
   CustomerControlPanel,
   GeneratedCommunityCardStack,
   FullscreenCard,
@@ -16,7 +17,7 @@ import { usePersona } from '@/contexts/PersonaContext';
 import { GeneratingMessage } from '@/components/LoadingSkeleton';
 import FeedbackButton from '@/components/FeedbackButton';
 
-const CARD_IDS = ['card-1', 'card-2', 'card-3', 'card-4'] as const;
+const CARD_IDS = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'] as const;
 
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
@@ -74,17 +75,17 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="h-screen snap-y snap-mandatory overflow-y-scroll"
+      className="h-screen snap-y snap-mandatory overflow-y-hidden"
     >
       <Header />
-      <Stepper steps={4} currentStep={activeStep} onStepClick={scrollToCard} />
+      <Stepper steps={5} currentStep={activeStep} onStepClick={scrollToCard} />
 
       <FullscreenCard id="card-1" centerContent showNextButton={false}>
         <div className="flex flex-col items-center gap-6">
           <ChatDialog
             welcomeTitle="Let's find your audience"
             welcomeMessage="Describe your target customer in the prompt box below - we'll analyse real people meeting this description to find where they pay attention online. The more specific, the better."
-            placeholder="Describe your ideal customer..."
+            placeholder="i.e. 25-35 y/o white-collar professionals living in Sydney interested in productivity, health/wellness and premium gadgets."
             onSubmit={(message) => {
               void (async () => {
                 setPersona(message);
@@ -169,6 +170,7 @@ export default function Home() {
             ) : customers ? (
               <CustomerControlPanel
                 customers={customers}
+                onRefinePrompt={() => scrollToCard(0)}
                 onViewCommunities={() => {
                   void (async () => {
                     setTimeout(() => scrollToCard(2), 0);
@@ -200,8 +202,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Page 3: Customer Analysis */}
       <section
         id="card-3"
+        className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
+      >
+        <WhiteboardBackground />
+
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4">
+          <CustomerAnalysisPage onNavigateToMarketing={() => scrollToCard(3)} />
+        </div>
+      </section>
+
+      {/* Page 4: Marketing Opportunities */}
+      <section
+        id="card-4"
         className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
       >
         <WhiteboardBackground />
@@ -209,12 +224,12 @@ export default function Home() {
         {/* Header - centered */}
         <div className="relative z-20 mb-4 mt-4 shrink-0 text-center px-4">
           <h2 className="text-2xl lg:text-3xl font-bold text-white">
-            Where Your Customers Pay Attention
+            Marketing Opportunities
           </h2>
           <p className="mx-auto mt-2 max-w-2xl text-sm lg:text-base text-slate-400">
-            These are the communities and channels where your ideal customers
-            are most engaged. Focus your marketing efforts here to maximize
-            reach and improve conversion rates.
+            These are the communities, creators, podcasts and other channels
+            where your ideal customers are highly engaged. Focus your marketing
+            efforts here to maximise reach and improve conversion rates.
           </p>
         </div>
 
@@ -241,9 +256,30 @@ export default function Home() {
             <GeneratedCommunityCardStack communities={communities} />
           ) : (
             <div className="flex h-full items-center justify-center">
-              <p className="text-lg text-gray-300">
-                Analyze customers first to see community recommendations
-              </p>
+              <button
+                onClick={() => {
+                  void (async () => {
+                    if (!hasGeneratedCommunities && persona && customers) {
+                      try {
+                        const generatedCommunities =
+                          await generateCommunities.mutateAsync({
+                            persona,
+                            customers,
+                            count: 5,
+                          });
+                        setCommunities(generatedCommunities);
+                        setHasGeneratedCommunities(true);
+                      } catch (error) {
+                        console.error('Failed to generate communities:', error);
+                      }
+                    }
+                  })();
+                }}
+                disabled={!persona || !customers}
+                className="rounded-xl bg-[#1e52f1] px-8 py-4 text-base font-medium text-white transition-all hover:bg-[#1e52f1]/90 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Generate Marketing Recommendations
+              </button>
             </div>
           )}
         </div>
@@ -265,7 +301,7 @@ export default function Home() {
 
           {/* Complete Demo Button */}
           <button
-            onClick={() => scrollToCard(3)}
+            onClick={() => scrollToCard(4)}
             disabled={!communities}
             onMouseEnter={(e) =>
               e.currentTarget.setAttribute('data-hover', 'true')
@@ -285,8 +321,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Page 5: Sign-up */}
       <section
-        id="card-4"
+        id="card-5"
         className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
       >
         <WhiteboardBackground />
