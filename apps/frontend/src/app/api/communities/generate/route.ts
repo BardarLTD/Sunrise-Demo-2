@@ -76,6 +76,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           !community.postFrequency ||
           !community.engagementRate ||
           !community.projectedROI ||
+          !community.contentRelevancePercentage ||
+          !community.relevantContentEngagement ||
           !community.followerQuotes ||
           !Array.isArray(community.followerQuotes)
         ) {
@@ -122,6 +124,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           postFrequency: community.postFrequency,
           engagementRate: community.engagementRate,
           projectedROI: community.projectedROI,
+          contentRelevancePercentage: community.contentRelevancePercentage,
+          relevantContentEngagement: community.relevantContentEngagement,
           customerEngagement: community.customerEngagement,
           followerQuotes: community.followerQuotes,
         };
@@ -177,7 +181,9 @@ Generate ${count} community recommendations that would effectively reach these c
 - Include follower growth from last week (e.g., "+2.5K", "+12%", "+850")
 - Include post frequency from last week (e.g., "5 posts/week", "3 videos/week", "Daily")
 - Provide engagement rate as a percentage (e.g., "8%", "12%")
-- Provide a believable ROI projection (e.g., "15x engagement", "12x reach", "20x conversion potential")
+- Provide a projected ROAS (Return on Ad Spend) between 2x and 6x (e.g., "3.5x ROAS", "4.2x ROAS", "5.8x ROAS")
+- Provide content relevance percentage (20-30%) showing what % of their content is relevant to the target persona's interests (e.g., "24%", "27%")
+- Provide engagement rate on relevant content, which should be 1-2% higher than the overall engagement rate (e.g., if engagementRate is "12%", then relevantContentEngagement should be "13%" or "14%")
 - Include 1-2 specific customer engagement examples referencing actual customer names from the list above (e.g., "Dave commented 'Amazing content!' two weeks ago")
 - Include 2-3 realistic follower/listener testimonial quotes with fake usernames (format: {username: "username", quote: "quote text"})
 - Type must be one of: "Content Creator", "Brand", "Community", "Channel", or "Podcast"
@@ -203,7 +209,9 @@ Respond with ONLY valid JSON in this exact format:
       "followerGrowth": "+2.5K",
       "postFrequency": "3 videos/week",
       "engagementRate": "12%",
-      "projectedROI": "15x engagement",
+      "projectedROI": "4.2x ROAS",
+      "contentRelevancePercentage": "26%",
+      "relevantContentEngagement": "14%",
       "customerEngagement": "Dave Johnson commented 'This is exactly what I needed!' 2 weeks ago",
       "followerQuotes": [
         {"username": "@tech_lover", "quote": "Best content in this space!"},

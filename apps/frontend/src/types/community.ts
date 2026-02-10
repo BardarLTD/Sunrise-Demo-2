@@ -16,6 +16,8 @@ export interface CommunityProfile {
   postFrequency: string; // e.g., "5 posts/week"
   engagementRate: string; // e.g., "10%"
   projectedROI: string; // e.g., "16x engagement"
+  contentRelevancePercentage: string; // e.g., "25%" - percentage of content relevant to the prompt
+  relevantContentEngagement: string; // e.g., "14%" - engagement rate on relevant content (1-2% higher than engagementRate)
   customerEngagement?: string | undefined; // Specific example of customer interaction
   followerQuotes: Array<{ username: string; quote: string }>; // Sample testimonials with usernames
 }

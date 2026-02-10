@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { CommunityProfile } from '@/types/community';
@@ -26,8 +26,17 @@ export function GeneratedCommunityCardStack({
     );
   };
 
-  // Calculate average ROI (mock calculation for demo)
-  const averageROI = '18x';
+  // Auto-scroll through communities every 20 seconds
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      goToNext();
+    }, 20000); // 20 seconds
+
+    return () => clearInterval(intervalId);
+  }, [currentIndex]); // Re-run when currentIndex changes to reset timer
+
+  // Calculate average ROAS (mock calculation for demo)
+  const averageROI = '4.2x ROAS';
   const totalChannels = 15;
 
   return (
@@ -36,7 +45,7 @@ export function GeneratedCommunityCardStack({
       <div className="flex w-64 lg:w-72 xl:w-80 shrink-0 flex-col justify-start py-4">
         <div className="rounded-2xl border border-[#595854] bg-[#2A2A29] p-4 lg:p-5 xl:p-6 shadow-2xl">
           <h3 className="mb-3 lg:mb-4 text-lg lg:text-xl font-bold text-white">
-            Channel Analysis
+            Marketing Opportunities
           </h3>
 
           {/* Stats */}
@@ -51,7 +60,7 @@ export function GeneratedCommunityCardStack({
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs lg:text-sm text-slate-400">
-                Average ROI
+                Average ROAS
               </span>
               <span className="text-base lg:text-lg font-bold text-emerald-300">
                 {averageROI}

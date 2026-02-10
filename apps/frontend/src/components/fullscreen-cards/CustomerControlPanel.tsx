@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { CustomerProfile } from '@/types/customer';
@@ -11,6 +11,7 @@ import { mixpanelService } from '@/lib/mixpanel';
 interface CustomerControlPanelProps {
   customers: CustomerProfile[];
   onViewCommunities?: () => void;
+  onRefinePrompt?: () => void;
 }
 
 // Helper function to get initials from name
@@ -44,8 +45,9 @@ function getColorFromName(name: string): string {
 export function CustomerControlPanel({
   customers,
   onViewCommunities,
+  onRefinePrompt,
 }: CustomerControlPanelProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const goToNext = () => {
@@ -55,6 +57,17 @@ export function CustomerControlPanel({
   const goToPrev = () => {
     setActiveIndex((prev) => (prev - 1 + customers.length) % customers.length);
   };
+
+  // Auto-scroll through customers every 20 seconds when expanded
+  useEffect(() => {
+    if (!isExpanded) return;
+
+    const intervalId = setInterval(() => {
+      goToNext();
+    }, 20000); // 20 seconds
+
+    return () => clearInterval(intervalId);
+  }, [isExpanded, activeIndex]); // Re-run when activeIndex changes to reset timer
 
   const handleViewCustomers = () => {
     // Track Mixpanel event
@@ -222,7 +235,7 @@ export function CustomerControlPanel({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs lg:text-sm text-slate-400">
-                      Avg Alignment
+                      Avg Prompt Match
                     </span>
                     <span className="text-base lg:text-lg font-bold text-emerald-300">
                       92%
@@ -280,8 +293,9 @@ export function CustomerControlPanel({
                   </button>
                 </div>
 
-                {/* Contact Customers Button */}
-                <div className="mt-3 lg:mt-4">
+                {/* Action Buttons Stack */}
+                <div className="mt-3 lg:mt-4 flex flex-col gap-2">
+                  {/* Contact Customers Button - Secondary */}
                   <FeedbackButton
                     question="*This feature is under development*. To help us create the best possible experience, please tell us a. how you would like to contact customers (i.e. automated marketing DM, email survey etc.) and b. what material impact this could have on your marketing?"
                     buttonText="Contact Customers"
@@ -289,22 +303,37 @@ export function CustomerControlPanel({
                       // No navigation - just collect feedback
                     }}
                     answerType="text"
-                    className="w-full rounded-lg bg-[#1e52f1] py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-[#1e52f1]/90"
-                  />
-                </div>
+                    className="group relative w-full overflow-hidden rounded-lg border border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-slate-300 transition-all hover:text-white"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
+                      style={{ backgroundImage: 'url(/gradient-bg.png)' }}
+                    />
+                    <div className="absolute inset-0 bg-[#2A2A29] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+                    <span className="relative z-10">Contact Customers</span>
+                  </FeedbackButton>
 
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsExpanded(false)}
-                  className="group relative mt-2 lg:mt-3 w-full overflow-hidden rounded-lg border border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm text-slate-300 transition-all hover:text-white"
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
-                    style={{ backgroundImage: 'url(/gradient-bg.png)' }}
-                  />
-                  <div className="absolute inset-0 bg-[#2A2A29] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
-                  <span className="relative z-10">Close Customer View</span>
-                </button>
+                  {/* Refine Prompt Button - Secondary */}
+                  <button
+                    onClick={onRefinePrompt}
+                    className="group relative w-full overflow-hidden rounded-lg border border-[#595854] py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-slate-300 transition-all hover:text-white"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-40"
+                      style={{ backgroundImage: 'url(/gradient-bg.png)' }}
+                    />
+                    <div className="absolute inset-0 bg-[#2A2A29] opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-70" />
+                    <span className="relative z-10">Refine Prompt</span>
+                  </button>
+
+                  {/* See Marketing Recommendations Button - Primary */}
+                  <button
+                    onClick={handleViewCommunities}
+                    className="w-full rounded-lg bg-[#1e52f1] py-1.5 lg:py-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-[#1e52f1]/90"
+                  >
+                    See Marketing Recommendations
+                  </button>
+                </div>
               </div>
             </div>
 

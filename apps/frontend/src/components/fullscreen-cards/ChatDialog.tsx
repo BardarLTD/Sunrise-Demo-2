@@ -86,10 +86,10 @@ export function ChatDialog({
             onChange={(e) => setMessage(e.target.value)}
             placeholder={placeholder}
             rows={4}
-            className={`w-full resize-none border-none bg-transparent px-5 py-4 text-base text-white focus:outline-none transition-all duration-500 ease-out ${
+            className={`w-full resize-none border-none bg-transparent px-5 py-4 text-base text-white focus:outline-none transition-all duration-500 ease-out placeholder:italic focus:placeholder:opacity-0 ${
               isHovered
                 ? 'placeholder:text-white'
-                : 'placeholder:text-slate-300'
+                : 'placeholder:text-slate-500'
             }`}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {

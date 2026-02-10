@@ -244,12 +244,45 @@ export function GeneratedCommunityCard({
             <div className="mb-1 flex items-center gap-1.5 lg:gap-2 text-slate-400">
               <Target size={12} className="lg:w-3.5 lg:h-3.5" />
               <span className="text-xs font-medium uppercase tracking-wider">
-                Projected ROI
+                Projected ROAS
               </span>
             </div>
             <p className="text-lg lg:text-xl font-bold text-purple-400">
               {community.projectedROI}
             </p>
+          </div>
+        </div>
+
+        {/* Content Relevance Section */}
+        <div className="mb-4 lg:mb-6">
+          <h4 className="mb-2 text-xs lg:text-sm font-semibold uppercase tracking-wider text-slate-400">
+            Content Relevance
+          </h4>
+          <div className="rounded-lg bg-blue-500/10 p-3 lg:p-4 ring-1 ring-blue-500/20">
+            <div className="grid grid-cols-2 gap-3 lg:gap-4">
+              <div>
+                <p className="mb-1 text-xs font-medium text-blue-300">
+                  Relevant Content
+                </p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-400">
+                  {community.contentRelevancePercentage}
+                </p>
+                <p className="mt-1 text-xs text-slate-400">
+                  posts relevant to your brand
+                </p>
+              </div>
+              <div>
+                <p className="mb-1 text-xs font-medium text-blue-300">
+                  Engagement on Relevant Content
+                </p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-400">
+                  {community.relevantContentEngagement}
+                </p>
+                <p className="mt-1 text-xs text-slate-400">
+                  Engagement rate on these posts
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
