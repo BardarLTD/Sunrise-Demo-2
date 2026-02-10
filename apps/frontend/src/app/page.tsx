@@ -286,19 +286,6 @@ export default function Home() {
 
         {/* Bottom Buttons */}
         <div className="relative z-20 pb-6 pt-3 flex shrink-0 justify-center gap-3 px-4">
-          {/* Content and trend insights feedback button */}
-          <FeedbackButton
-            question="Feature in development. To make it as effective as possible, what specifically would you like to see? Is it the content customers are engaging with, emerging trends, key talking points and community focuses etc.? If possible, quantify how this would benefit you or what problem it would solve, i.e. this would inform content and save 4 hours per week in manual research"
-            buttonText="See content and trend insights instead"
-            onClick={() => {
-              // No navigation - just collect feedback
-            }}
-            answerType="text"
-            className="group relative overflow-hidden rounded-xl bg-[#1e52f1] px-4 lg:px-6 py-3 text-sm lg:text-base font-medium text-white transition-all hover:bg-[#1e52f1]/90"
-          >
-            <>See content and trend insights instead</>
-          </FeedbackButton>
-
           {/* Complete Demo Button */}
           <button
             onClick={() => scrollToCard(4)}
