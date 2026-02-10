@@ -21,19 +21,19 @@ export const CustomerAnalysisPage: React.FC<CustomerAnalysisPageProps> = ({
   onNavigateToMarketing,
 }) => {
   return (
-    <div className="flex w-full max-w-5xl flex-col items-center">
-      {/* Header */}
-      <div className="mb-8 text-center lg:mb-12">
-        <h2 className="mb-3 text-3xl font-bold text-white lg:text-4xl">
+    <div className="flex h-full w-full max-w-5xl flex-col items-center justify-center px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+      {/* Header - scales with viewport height */}
+      <div className="mb-[2vh] text-center sm:mb-[3vh]">
+        <h2 className="mb-2 text-[clamp(1.5rem,4vh,2.5rem)] font-bold text-white">
           Customer Analysis
         </h2>
-        <p className="text-base text-slate-400 lg:text-lg">
+        <p className="text-[clamp(0.875rem,2vh,1.125rem)] text-slate-400">
           What insights would you like to draw from these customers first
         </p>
       </div>
 
-      {/* Options grid */}
-      <div className="grid w-full gap-6 md:grid-cols-2">
+      {/* Options grid - Always 2 columns, scales with viewport */}
+      <div className="grid w-full max-w-5xl grid-cols-2 gap-[1.5vmin] sm:gap-[2vmin] md:gap-[2.5vmin]">
         {/* Product Insights - Feedback */}
         <FeedbackButton
           question={FEEDBACK_QUESTION}

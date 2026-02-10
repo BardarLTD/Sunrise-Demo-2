@@ -9,6 +9,9 @@ import {
   FullscreenCard,
   Stepper,
   WhiteboardBackground,
+  LandingCard,
+  SurveyCard,
+  PathSelectionCard,
 } from '@/components/fullscreen-cards';
 import { Header } from '@/components/Header';
 import { useGenerateCustomers } from '@/api/queries/customers';
@@ -16,8 +19,18 @@ import { useGenerateCommunities } from '@/api/queries/communities';
 import { usePersona } from '@/contexts/PersonaContext';
 import { GeneratingMessage } from '@/components/LoadingSkeleton';
 import FeedbackButton from '@/components/FeedbackButton';
+import { mixpanelService } from '@/lib/mixpanel';
 
-const CARD_IDS = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'] as const;
+const CARD_IDS = [
+  'card-0',
+  'card-1',
+  'card-2',
+  'card-3',
+  'card-4',
+  'card-5',
+  'card-6',
+  'card-7',
+] as const;
 
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
@@ -78,12 +91,42 @@ export default function Home() {
       className="h-screen snap-y snap-mandatory overflow-y-hidden"
     >
       <Header />
-      <Stepper steps={5} currentStep={activeStep} onStepClick={scrollToCard} />
+      <Stepper steps={8} currentStep={activeStep} onStepClick={scrollToCard} />
 
+      {/* Card 0: Landing Page */}
+      <FullscreenCard id="card-0" centerContent showNextButton={false}>
+        <LandingCard onComplete={() => scrollToCard(1)} />
+      </FullscreenCard>
+
+      {/* Card 1: Survey Questions */}
       <FullscreenCard id="card-1" centerContent showNextButton={false}>
+        <SurveyCard onComplete={() => scrollToCard(2)} />
+      </FullscreenCard>
+
+      {/* Card 2: Path Selection */}
+      <section
+        id="card-2"
+        className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
+      >
+        <WhiteboardBackground />
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4">
+          <PathSelectionCard
+            onActivateClick={() => {
+              mixpanelService.track('Path Selection - Activate Clicked', {
+                page: window.location.pathname,
+                timestamp: new Date().toISOString(),
+              });
+              scrollToCard(3);
+            }}
+          />
+        </div>
+      </section>
+
+      {/* Card 3: Persona Input (formerly card-1) */}
+      <FullscreenCard id="card-3" centerContent showNextButton={false}>
         <div className="flex flex-col items-center gap-6">
           <ChatDialog
-            welcomeTitle="Let's find your audience"
+            welcomeTitle="Let's find your customers"
             welcomeMessage="Describe your target customer in the prompt box below - we'll analyse real people meeting this description to find where they pay attention online. The more specific, the better."
             placeholder="i.e. 25-35 y/o white-collar professionals living in Sydney interested in productivity, health/wellness and premium gadgets."
             onSubmit={(message) => {
@@ -92,7 +135,7 @@ export default function Home() {
                 setHasGeneratedCommunities(false);
 
                 // Use setTimeout to ensure scroll happens after React updates
-                setTimeout(() => scrollToCard(1), 0);
+                setTimeout(() => scrollToCard(4), 0);
 
                 try {
                   const generatedCustomers =
@@ -107,24 +150,12 @@ export default function Home() {
               })();
             }}
           />
-
-          {/* Discover optimum target feedback button */}
-          <FeedbackButton
-            question="*This feature is in development* To help us make it as powerful as possible, can you tell us a. the product you sell and b. what details you want in your customer profile?"
-            buttonText="Don't know your target customer? Discover with data"
-            onClick={() => {
-              // No navigation - just collect feedback
-            }}
-            answerType="text"
-            className="group relative overflow-hidden rounded-xl bg-[#1e52f1] px-6 py-3 text-base font-medium text-white transition-all hover:bg-[#1e52f1]/90"
-          >
-            <>Don&apos;t know your target customer? Discover with data</>
-          </FeedbackButton>
         </div>
       </FullscreenCard>
 
+      {/* Card 4: Customers (formerly card-2) */}
       <section
-        id="card-2"
+        id="card-4"
         className="relative flex h-screen snap-start flex-col overflow-x-hidden pt-14"
       >
         <WhiteboardBackground />
@@ -139,7 +170,7 @@ export default function Home() {
               Based on your description, here&apos;s a sample of people who
               match your ideal customer profile. Not quite right?{' '}
               <button
-                onClick={() => scrollToCard(0)}
+                onClick={() => scrollToCard(3)}
                 className="font-semibold text-slate-300 underline underline-offset-2 transition-colors hover:text-white"
               >
                 Go back
@@ -170,10 +201,10 @@ export default function Home() {
             ) : customers ? (
               <CustomerControlPanel
                 customers={customers}
-                onRefinePrompt={() => scrollToCard(0)}
+                onRefinePrompt={() => scrollToCard(3)}
                 onViewCommunities={() => {
                   void (async () => {
-                    setTimeout(() => scrollToCard(2), 0);
+                    setTimeout(() => scrollToCard(5), 0);
                     if (!hasGeneratedCommunities && persona && customers) {
                       try {
                         const generatedCommunities =
@@ -202,21 +233,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Page 3: Customer Analysis */}
+      {/* Card 5: Customer Analysis (formerly card-3) */}
       <section
-        id="card-3"
+        id="card-5"
         className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
       >
         <WhiteboardBackground />
 
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4">
-          <CustomerAnalysisPage onNavigateToMarketing={() => scrollToCard(3)} />
+          <CustomerAnalysisPage onNavigateToMarketing={() => scrollToCard(6)} />
         </div>
       </section>
 
-      {/* Page 4: Marketing Opportunities */}
+      {/* Card 6: Marketing Opportunities (formerly card-4) */}
       <section
-        id="card-4"
+        id="card-6"
         className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
       >
         <WhiteboardBackground />
@@ -288,7 +319,7 @@ export default function Home() {
         <div className="relative z-20 pb-6 pt-3 flex shrink-0 justify-center gap-3 px-4">
           {/* Complete Demo Button */}
           <button
-            onClick={() => scrollToCard(4)}
+            onClick={() => scrollToCard(7)}
             disabled={!communities}
             onMouseEnter={(e) =>
               e.currentTarget.setAttribute('data-hover', 'true')
@@ -308,9 +339,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Page 5: Sign-up */}
+      {/* Card 7: Sign-up (formerly card-5) */}
       <section
-        id="card-5"
+        id="card-7"
         className="relative flex h-screen snap-start flex-col overflow-hidden pt-14"
       >
         <WhiteboardBackground />

@@ -8,6 +8,14 @@ import {
   Bookmark,
   ExternalLink,
 } from 'lucide-react';
+import {
+  FaReddit,
+  FaInstagram,
+  FaTiktok,
+  FaYoutube,
+  FaSpotify,
+  FaLinkedin,
+} from 'react-icons/fa';
 import type { CommunityProfile } from '@/types/community';
 import FeedbackButton from '@/components/FeedbackButton';
 import { mixpanelService } from '@/lib/mixpanel';
@@ -16,32 +24,25 @@ interface GeneratedCommunityCardProps {
   community: CommunityProfile;
 }
 
-// Helper function to get initials from name
-function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
-}
-
-// Helper function to generate a color from name
-function getColorFromName(name: string): string {
-  const colors = [
-    'bg-emerald-500',
-    'bg-blue-500',
-    'bg-purple-500',
-    'bg-pink-500',
-    'bg-orange-500',
-    'bg-teal-500',
-    'bg-cyan-500',
-    'bg-indigo-500',
-  ];
-  const hash = name
-    .split('')
-    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  return colors[hash % colors.length]!;
+// Helper function to get platform icon and background color
+function getPlatformStyle(platform: CommunityProfile['platform']): {
+  icon: React.ComponentType<{ className?: string }>;
+  bgColor: string;
+} {
+  switch (platform) {
+    case 'Reddit':
+      return { icon: FaReddit, bgColor: 'bg-[#FF4500]' };
+    case 'Instagram':
+      return { icon: FaInstagram, bgColor: 'bg-[#E4405F]' };
+    case 'TikTok':
+      return { icon: FaTiktok, bgColor: 'bg-[#a29bfe]' };
+    case 'YouTube':
+      return { icon: FaYoutube, bgColor: 'bg-[#FF0000]' };
+    case 'Spotify':
+      return { icon: FaSpotify, bgColor: 'bg-[#1DB954]' };
+    case 'LinkedIn':
+      return { icon: FaLinkedin, bgColor: 'bg-[#0A66C2]' };
+  }
 }
 
 // Helper function to highlight customer names in text
@@ -150,12 +151,19 @@ export function GeneratedCommunityCard({
       <div className="p-4 lg:p-6 xl:p-8">
         {/* Header with Profile Circle */}
         <div className="mb-4 lg:mb-6 flex items-start gap-3 lg:gap-4">
-          {/* Profile Circle */}
-          <div
-            className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border border-[#595854] text-base lg:text-lg font-bold text-white ${getColorFromName(community.name)}`}
-          >
-            {getInitials(community.name)}
-          </div>
+          {/* Profile Circle with Platform Icon */}
+          {(() => {
+            const { icon: PlatformIcon, bgColor } = getPlatformStyle(
+              community.platform,
+            );
+            return (
+              <div
+                className={`flex h-12 w-12 lg:h-16 lg:w-16 shrink-0 items-center justify-center rounded-full border border-[#595854] ${bgColor}`}
+              >
+                <PlatformIcon className="h-6 w-6 lg:h-8 lg:w-8 text-white" />
+              </div>
+            );
+          })()}
 
           {/* Name and Badges */}
           <div className="flex-1 min-w-0">

@@ -9,6 +9,14 @@ import React, {
 import type { CustomerProfile } from '@/types/customer';
 import type { CommunityProfile } from '@/types/community';
 
+export interface SurveyAnswers {
+  companyName: string;
+  industry: string;
+  product: string;
+  why: string;
+  other: string;
+}
+
 interface PersonaContextType {
   persona: string | null;
   setPersona: (persona: string) => void;
@@ -16,6 +24,8 @@ interface PersonaContextType {
   setCustomers: (customers: CustomerProfile[]) => void;
   communities: CommunityProfile[] | null;
   setCommunities: (communities: CommunityProfile[]) => void;
+  surveyAnswers: SurveyAnswers;
+  setSurveyAnswer: (key: keyof SurveyAnswers, value: string) => void;
   clearAll: () => void;
 }
 
@@ -31,11 +41,29 @@ export function PersonaProvider({
   const [communities, setCommunities] = useState<CommunityProfile[] | null>(
     null,
   );
+  const [surveyAnswers, setSurveyAnswersState] = useState<SurveyAnswers>({
+    companyName: '',
+    industry: '',
+    product: '',
+    why: '',
+    other: '',
+  });
+
+  const setSurveyAnswer = (key: keyof SurveyAnswers, value: string): void => {
+    setSurveyAnswersState((prev) => ({ ...prev, [key]: value }));
+  };
 
   const clearAll = (): void => {
     setPersona(null);
     setCustomers(null);
     setCommunities(null);
+    setSurveyAnswersState({
+      companyName: '',
+      industry: '',
+      product: '',
+      why: '',
+      other: '',
+    });
   };
 
   return (
@@ -47,6 +75,8 @@ export function PersonaProvider({
         setCustomers,
         communities,
         setCommunities,
+        surveyAnswers,
+        setSurveyAnswer,
         clearAll,
       }}
     >

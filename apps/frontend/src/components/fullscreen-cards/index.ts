@@ -12,5 +12,8 @@ export { GeneratedCommunityCardStack } from './GeneratedCommunityCardStack';
 export { GeneratedCustomerCard } from './GeneratedCustomerCard';
 export { GeneratedCustomerCarousel } from './GeneratedCustomerCarousel';
 export { FullscreenCard } from './FullscreenCard';
+export { LandingCard } from './LandingCard';
+export { PathSelectionCard } from './PathSelectionCard';
 export { Stepper } from './Stepper';
+export { SurveyCard } from './SurveyCard';
 export { WhiteboardBackground } from './WhiteboardBackground';

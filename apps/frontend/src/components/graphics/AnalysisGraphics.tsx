@@ -2,7 +2,13 @@ import type React from 'react';
 
 export const ProductInsightsGraphic: React.FC = () => {
   return (
-    <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 200 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-full w-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
       {/* Bar chart */}
       <rect x="30" y="70" width="20" height="30" fill="#1e52f1" opacity="0.6" />
       <rect x="60" y="55" width="20" height="45" fill="#1e52f1" opacity="0.7" />
@@ -36,7 +42,13 @@ export const ProductInsightsGraphic: React.FC = () => {
 
 export const PartnershipsGraphic: React.FC = () => {
   return (
-    <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 200 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-full w-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
       {/* Central node */}
       <circle cx="100" cy="60" r="15" fill="#1e52f1" />
 
@@ -91,7 +103,13 @@ export const PartnershipsGraphic: React.FC = () => {
 
 export const ContentInsightsGraphic: React.FC = () => {
   return (
-    <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 200 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-full w-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
       {/* Document outline */}
       <rect
         x="50"
@@ -138,7 +156,13 @@ export const ContentInsightsGraphic: React.FC = () => {
 
 export const CompetitorsGraphic: React.FC = () => {
   return (
-    <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 200 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-full w-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
       {/* You bar - tallest */}
       <rect x="40" y="30" width="30" height="70" fill="#10b981" />
 

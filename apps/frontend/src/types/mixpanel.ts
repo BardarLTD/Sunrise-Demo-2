@@ -14,4 +14,14 @@ export interface FeedbackEvent {
   timestamp: string; // ISO timestamp
 }
 
+export interface SurveyAnswerEvent {
+  question_key: string;
+  question_text: string;
+  answer: string;
+  answer_length: number;
+  question_number: number;
+  page: string;
+  timestamp: string; // ISO timestamp
+}
+
 export type AnswerType = 'text' | 'rating' | 'multiple-choice';
