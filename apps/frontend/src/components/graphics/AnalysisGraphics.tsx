@@ -17,7 +17,7 @@ export const ProductInsightsGraphic: React.FC = () => {
         strokeLinecap="round"
       />
 
-      {/* Upward arrows */}
+      {/* Upward arrows - vertically aligned */}
       <path
         d="M 150 35 L 160 25 L 170 35"
         stroke="#10b981"
@@ -25,7 +25,7 @@ export const ProductInsightsGraphic: React.FC = () => {
         fill="none"
       />
       <path
-        d="M 155 55 L 165 45 L 175 55"
+        d="M 150 55 L 160 45 L 170 55"
         stroke="#10b981"
         strokeWidth="2"
         fill="none"
@@ -141,15 +141,9 @@ export const CompetitorsGraphic: React.FC = () => {
     <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* You bar - tallest */}
       <rect x="40" y="30" width="30" height="70" fill="#10b981" />
-      <text x="55" y="110" fill="white" fontSize="10" textAnchor="middle">
-        You
-      </text>
 
       {/* Competitor 1 */}
       <rect x="85" y="50" width="30" height="50" fill="#595854" opacity="0.6" />
-      <text x="100" y="110" fill="#595854" fontSize="10" textAnchor="middle">
-        A
-      </text>
 
       {/* Competitor 2 */}
       <rect
@@ -160,14 +154,11 @@ export const CompetitorsGraphic: React.FC = () => {
         fill="#595854"
         opacity="0.6"
       />
-      <text x="145" y="110" fill="#595854" fontSize="10" textAnchor="middle">
-        B
-      </text>
 
       {/* Crown/star on You bar */}
       <path
         d="M 55 15 L 58 22 L 66 22 L 59 27 L 62 35 L 55 30 L 48 35 L 51 27 L 44 22 L 52 22 Z"
-        fill="#fbbf24"
+        fill="#8b5cf6"
       />
     </svg>
   );
